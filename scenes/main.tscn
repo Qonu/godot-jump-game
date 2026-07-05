@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1234567890ab"]
+
+[ext_resource type="Script" path="res://scripts/Level.gd"]
+[ext_resource type="Script" path="res://scripts/Player.gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(200, 20)
+
+[node name="Level" type="Node2D"]
+script = SubResource("Level.gd")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(512, 400)
+script = SubResource("Player.gd")
+
+[node name="Sprite2D" type="ColorRect" parent="Player"]
+offset = Vector2(-16, -16)
+size = Vector2(32, 32)
+color = Color.RED
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+position = Vector2(512, 550)
+
+[node name="ColorRect" type="ColorRect" parent="Platforms/Ground"]
+offset = Vector2(-512, -10)
+size = Vector2(1024, 20)
+color = Color.GREEN
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
+shape = SubResource("RectangleShape2D_platform")
+position = Vector2(0, 0)
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(300, 450)
+
+[node name="ColorRect" type="ColorRect" parent="Platforms/Platform1"]
+offset = Vector2(-100, -10)
+size = Vector2(200, 20)
+color = Color.BLUE
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(700, 380)
+
+[node name="ColorRect" type="ColorRect" parent="Platforms/Platform2"]
+offset = Vector2(-100, -10)
+size = Vector2(200, 20)
+color = Color.BLUE
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(350, 300)
+
+[node name="ColorRect" type="ColorRect" parent="Platforms/Platform3"]
+offset = Vector2(-100, -10)
+size = Vector2(200, 20)
+color = Color.BLUE
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1, 1)
